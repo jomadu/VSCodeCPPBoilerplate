@@ -28,7 +28,7 @@
         {
             "label": "test_release",
             "type": "shell",
-            "command": "${workspaceFolder}/build/release/test/Racko_test",
+            "command": "${workspaceFolder}/build/release/test/MY_PROJECT_NAME_test",
             "dependsOn": [
                 "build_release"
             ],
@@ -40,7 +40,7 @@
         {
             "label": "test_debug",
             "type": "shell",
-            "command": "${workspaceFolder}/build/debug/test/Racko_test",
+            "command": "${workspaceFolder}/build/debug/test/MY_PROJECT_NAME_test",
             "dependsOn": [
                 "build_debug"
             ],
