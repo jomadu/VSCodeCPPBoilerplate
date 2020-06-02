@@ -2,6 +2,7 @@
 #define LOGGER_HPP
 
 #include <string>
+
 class Logger
 {
 public:
@@ -28,4 +29,19 @@ protected:
 private:
     static Logger *inst_;
 };
+
+
+#define LOG_ERROR(msg) {\
+    auto &logger = Logger::instance();\
+    logger.log(Logger::LogLevel::ERROR, msg);\
+}
+#define LOG_WARN(msg) {\
+    auto &logger = Logger::instance();\
+    logger.log(Logger::LogLevel::WARN, msg);\
+}
+#define LOG_INFO(msg) {\
+    auto &logger = Logger::instance();\
+    logger.log(Logger::LogLevel::INFO, msg);\
+}
+
 #endif // LOGGER_HPP
