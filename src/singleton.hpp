@@ -1,3 +1,7 @@
+
+#ifndef SINGLETON_HPP
+#define SINGLETON_HPP
+
 template <class T>
 class Singleton
 {
@@ -15,3 +19,5 @@ public:
 protected:
     Singleton(){};
 };
+
+#endif

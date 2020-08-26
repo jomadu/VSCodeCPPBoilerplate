@@ -2,7 +2,7 @@
 #define LOGGER_HPP
 
 #include <string>
-#include "templateClasses.cpp"
+#include "singleton.hpp"
 
 class Logger : public Singleton<Logger>
 {
