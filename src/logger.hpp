@@ -2,8 +2,9 @@
 #define LOGGER_HPP
 
 #include <string>
+#include "templateClasses.cpp"
 
-class Logger
+class Logger : public Singleton<Logger>
 {
 public:
     enum LogLevel
@@ -15,33 +16,17 @@ public:
         DEBUG1,
         DEBUG2
     };
-    static Logger &instance();
-    static void deleteInstance();
     static void logLevel(const LogLevel &log_level);
     static Logger::LogLevel logLevel();
     static void log(const LogLevel &log_level, const std::string &msg);
+    static void logError(const std::string &msg);
+    static void logWarn(const std::string &msg);
+    static void logInfo(const std::string &msg);
 
 protected:
+    friend Singleton;
     LogLevel log_level_;
-    Logger() : log_level_(LogLevel::INFO) {};
-    ~Logger(){};
-
-private:
-    static Logger *inst_;
+    Logger() : log_level_(LogLevel::INFO){};
 };
-
-
-#define LOG_ERROR(msg) {\
-    auto &logger = Logger::instance();\
-    logger.log(Logger::LogLevel::ERROR, msg);\
-}
-#define LOG_WARN(msg) {\
-    auto &logger = Logger::instance();\
-    logger.log(Logger::LogLevel::WARN, msg);\
-}
-#define LOG_INFO(msg) {\
-    auto &logger = Logger::instance();\
-    logger.log(Logger::LogLevel::INFO, msg);\
-}
 
 #endif // LOGGER_HPP
